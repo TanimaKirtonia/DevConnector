@@ -15,7 +15,7 @@
     check('name','Name is required').not().isEmpty(),
     check('email', 'Include a valid email').isEmail(),
     check('password','Enter a password with 8 or more characters').isLength({
-        min:8
+        min:8 
     })
  ],
     async (req, res) => {
@@ -47,7 +47,8 @@
              });
 
              // encrypt the password 
-             const salt = await bcrypt.genSalt(10); //salt 
+             const salt = await bcrypt.genSalt(10); //salt no idea kya 
+
              user.password = await bcrypt.hash(password, salt); //hashing
 
              await user.save(); //anything that returns a promise should have "await" in front of the statement 

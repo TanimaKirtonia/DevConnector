@@ -1,4 +1,4 @@
 {
     "mongoURI": "mongodb+srv://tanima123:tanima123@devconnector.kh4pj.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "mysecrettoken"
+    "jwtSecret": "mysecrettoken" 
 }
