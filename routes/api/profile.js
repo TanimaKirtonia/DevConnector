@@ -208,9 +208,9 @@ router.post(
       title,
       company,
       location,
-      from,
+      from, //give in "yyyy-mm-dd" format
       to,
-      current,
+      current, //boolean
       description
     }
 
@@ -219,7 +219,8 @@ router.post(
         user: req.user.id
       });
 
-      profile.experience.unshift(newExp); //same as push() but push() inserts at end and unshift() inserts at the beginning 
+      profile.experience.unshift(newExp); 
+      //same as push() but push() inserts at end and unshift() inserts at the beginning 
       await profile.save();
 
       res.json(profile);
