@@ -1,6 +1,6 @@
 import React,{Fragment, useState} from 'react'
 import {Link } from 'react-router-dom';
-//import axios from 'axios';
+import axios from 'axios';
 const Register = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -16,14 +16,14 @@ const Register = () => {
 
     const onSubmit = async e =>{
         e.preventDefault();
-        console.log = 'SUCCESS';
-       /* const newUser = {
+        //console.log = 'SUCCESS';
+       const newUser = {
            name,
            email,
            password 
         }
 
-        try{
+        try{ 
             const config ={
                 headers: {
                     'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ const Register = () => {
         }
         catch(err){
             console.error(err.response.data);
-        }*/
+        }
     }
     
     return (
