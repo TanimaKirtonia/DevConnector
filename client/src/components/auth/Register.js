@@ -1,7 +1,9 @@
 import React,{Fragment, useState} from 'react'
-import {Link } from 'react-router-dom';
-import axios from 'axios';
-const Register = () => {
+import {Link} from 'react-router-dom';
+//import axios from 'axios';
+//import { setAlert } from '../../actions/alert';
+
+const Register = props => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -14,31 +16,15 @@ const Register = () => {
         ...formData, [e.target.name]: e.target.value
     });
 
-    const onSubmit = async e =>{
+    const onSubmit = async (e) =>{
         e.preventDefault();
-        //console.log = 'SUCCESS';
-       const newUser = {
-           name,
-           email,
-           password 
+        register({ name, email, password });
         }
-
-        try{ 
-            const config ={
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-
-            const body = JSON.stringify(newUser);
-            const res = await axios.post('/api/users', body, config);
-            console.log(res.data);
-        }
-        catch(err){
-            console.error(err.response.data);
-        }
-    }
     
+    if (isAuthenticated) {
+            return <Redirect to="/dashboard" />;
+    }
+
     return (
         <Fragment>
             <h1 className="large text-primary">
@@ -65,6 +51,16 @@ const Register = () => {
     </p>
         </Fragment>
     );
-};
 
-export default Register;
+    };
+    Register.propTypes = {
+        //setAlert: PropTypes.func.isRequired,
+        register: PropTypes.func.isRequired,
+        isAuthenticated: PropTypes.bool
+      };
+      
+      const mapStateToProps = (state) => ({
+        isAuthenticated: state.auth.isAuthenticated
+      });
+      
+      export default connect(mapStateToProps, {register})(Register);
